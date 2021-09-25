@@ -1,10 +1,10 @@
-import datetime
+import datetime, json
 
 input_ = ""
 present = {}
 
 def get_input():
-	input_ = input("Hold your card up")
+	input_ = input("Hold your card up to the reader: ")
 	with open('data.json') as data_file:
 		data = json.load(data_file)
 		with open('present_today.json') as data_file:
@@ -14,7 +14,7 @@ def get_input():
 				if (input_ == ID):
 					if (str(data[ID][1] not in present)):
 						print("Welcome to class, " + str(data[ID][1]))
-						present[str(data[ID][1])] = datetime.datetime.now()
+						present[str(data[ID][1])] = str(datetime.datetime.now())
 
 	with open("present_today.json", "w") as data_file:
 		json.dump(present, data_file, indent = 3)
