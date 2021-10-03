@@ -40,8 +40,7 @@ entry = tk.Entry(frame, bg = "#D3D3D3")
 entry.place(relx = 0.2, rely = 0.11, relheight = 0.05, relwidth = 0.375)
 
 def button_pressed():
-	error = tk.Label(frame, text = "", bg = "#D3D3D3", fg = "red")
-	error.place(relx = 0, rely = 0.64, relheight = 0.05, relwidth = 0.375)
+	error = tk.Label(frame, text = "", fg = "red")
 	input_ = entry.get()
 	entry.delete(0, "end")
 
@@ -55,10 +54,11 @@ def button_pressed():
 		update_listBox()
 	else:
 		error = tk.Label(frame, text = "Could not find student, PLease try again", bg = "#D3D3D3", fg = "red")
-		error.place(relx = 0, rely = 0.64, relheight = 0.05, relwidth = 0.375)
 
 	for i in present_list:
 		present[i] = str(datetime.datetime.now())
+
+	error.place(relx = 0, rely = 0.64, relheight = 0.05, relwidth = 0.375)
 
 	with open("present_today.json", "w") as data_file:
 		json.dump(present, data_file, indent = 3)
