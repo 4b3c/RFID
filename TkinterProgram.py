@@ -69,6 +69,19 @@ button.place(relx = 0.6, rely = 0.11, relheight = 0.05, relwidth = 0.2)
 list_title = tk.Label(frame, text = "Not signed in:", bg = "#D3D3D3")
 list_title.place(relx = 0, rely = 0.17, relheight = 0.05, relwidth = 0.375)
 
+def enter_new_student():
+	new_entry = tk.Entry(frame, bg = "#D3D3D3")
+	new_entry.place(relx = 0.7, rely = 0.95, relwidth = 0.2, relheight = 0.05)
+
+	def add_names():
+		last_name = new_entry.get()
+
+	add = tk.Button(frame, text = "Add", bg = "#D3D3D3", command = add_names)
+	add.place(relx = 0.91, rely = 0.95, relwidth = 0.09, relheight = 0.05)
+
+add_students = tk.Button(frame, text = "Add a student", bg = "#D3D3D3", command = enter_new_student)
+add_students.place(relx = 0.7, rely = 0.89, relwidth = 0.3, relheight = 0.05)
+
 update_listBox()
 
 root.mainloop()
