@@ -31,7 +31,6 @@ def add_names(list_of_widgets):
 	last_name = list_of_widgets[0].get()
 	first_name = list_of_widgets[2].get()
 	ID = list_of_widgets[4].get()
-	print(first_name, last_name, ID)
 
 	with open("data.json") as data_file:
 		all_students = json.load(data_file)
