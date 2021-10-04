@@ -16,8 +16,6 @@ with open("data.json") as data_file:
 	for i in not_here:
 		absent_list.append(not_here[i][1] + " " + not_here[i][0])
 
-print(absent_list)
-
 font = tk.font.Font(family = "Bahnschrift SemiBold Condensed", size = 20, weight = "bold")
 HEIGHT = 500
 WIDTH = 900
@@ -43,7 +41,6 @@ def add_names(list_of_widgets):
 	add.place_forget()
 
 def update_listBox():
-	print(absent_list)
 	listBox = tk.Listbox(frame, bg = "#D3D3D3")
 	for i in range(len(absent_list)):
 		listBox.insert(i, absent_list[i])
