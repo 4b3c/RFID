@@ -9,7 +9,7 @@ absent_list = []
 present_list = []
 
 with open("present_today.json", "w") as data_file:
-	json.dump(present, data_file, indent = 3)
+		json.dump(present, data_file, indent = 3)
 
 with open("data.json") as data_file:
 	not_here = json.load(data_file)
@@ -43,9 +43,11 @@ def add_names(list_of_widgets):
 	add.place_forget()
 
 def update_listBox():
-	listBox.place(relx = 0.0, rely = 0.23, relheight = 0.4, relwidth = 0.375)
+	print(absent_list)
+	listBox = tk.Listbox(frame, bg = "#D3D3D3")
 	for i in range(len(absent_list)):
 		listBox.insert(i, absent_list[i])
+	listBox.place(relx = 0.0, rely = 0.23, relheight = 0.4, relwidth = 0.375)
 
 def button_pressed():
 	error = tk.Label(frame, text = "", fg = "red")
@@ -57,9 +59,10 @@ def button_pressed():
 		present_list.append(input_)
 		update_listBox()
 	elif (input_ in not_here and input_ not in present_list):
-		absent_list.remove(not_here[input_][1] + " " + not_here[input_][0])
-		present_list.append(not_here[input_][1] + " " + not_here[input_][0])
-		update_listBox()
+		if (input_ in not_here):
+			absent_list.remove(not_here[input_][1] + " " + not_here[input_][0])
+			present_list.append(not_here[input_][1] + " " + not_here[input_][0])
+			update_listBox()
 	else:
 		error = tk.Label(frame, text = "Could not find student, PLease try again", bg = "#D3D3D3", fg = "red")
 
